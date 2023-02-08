@@ -12,8 +12,11 @@ func main() {
 	var firstOp, secondOp, f int
 	var isRoman bool
 	var isRoman1 bool
-	fmt.Scanln(&a, &op, &b)
-
+	_, err := fmt.Scanln(&a, &op, &b)
+	if err != nil {
+		fmt.Println("Вывод ошибки, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)")
+		return
+	}
 	for i := 0; i < len(roman); i++ {
 		if a == roman[i] {
 			firstOp = i + 1
@@ -38,7 +41,7 @@ func main() {
 	}
 	if (firstOp >= 1 && firstOp <= 10) || (secondOp >= 1 && secondOp <= 10) {
 	} else {
-		fmt.Println("Вывод ошибки, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *) / числа нужны от 1 до 10 включительно")
+		fmt.Println("Вывод ошибки, так как формат математической операции не удовлетворяет заданию — числа нужны от 1 до 10 включительно")
 		return
 	}
 	switch op {
